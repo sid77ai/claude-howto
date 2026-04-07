@@ -861,15 +861,6 @@ Quick start:
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on how to get started.
 
-## Contributors
-
-Thanks to everyone who has contributed to this project!
-
-| Contributor | PRs |
-|-------------|-----|
-| [wjhrdy](https://github.com/wjhrdy) | [#1 - add a tool to create an epub](https://github.com/luongnv89/claude-howto/pull/1) |
-| [VikalpP](https://github.com/VikalpP) | [#7 - fix(docs): Use tilde fences for nested code blocks in concepts guide](https://github.com/luongnv89/claude-howto/pull/7) |
-
 ---
 
 ## License
