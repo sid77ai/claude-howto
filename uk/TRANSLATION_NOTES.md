@@ -134,7 +134,7 @@ graph TD
 ```
 
 <!-- ❌ НЕПРАВИЛЬНО -->
-```mermaid
+```text
 graph TD
     # Це зламає парсер!
     A[User] --> B[Agent]
