@@ -92,6 +92,8 @@ Commands are user-invoked shortcuts that execute specific actions.
 | `/upgrade` | Check for updates | Version management |
 | `/team-onboarding` | Generate a teammate ramp-up guide from this project's Claude Code usage | Onboarding new teammates (v2.1.101) |
 | `/ultraplan` | Hand a planning task to a Claude Code web session in plan mode | Heavy planning offload (Research Preview, v2.1.91+) |
+| `/ultrareview` | Run a cloud multi-agent code review over your current changes | Deep pre-merge review across multiple agents (v2.1.112) |
+| `/less-permission-prompts` | Scan transcripts and propose a prioritized allowlist for common read-only tools | Reduce repeat permission prompts in a project (v2.1.112) |
 
 ### Custom Commands (Examples)
 
@@ -529,7 +531,9 @@ chmod +x ~/.claude/hooks/*.sh
 ---
 
 **Last Updated**: April 16, 2026
-**Claude Code Version**: 2.1.110
+**Claude Code Version**: 2.1.112
 **Sources**:
-- https://code.claude.com/docs/en/overview
-- https://code.claude.com/docs/en/commands
+- https://docs.anthropic.com/en/docs/claude-code
+- https://www.anthropic.com/news/claude-opus-4-7
+- https://support.claude.com/en/articles/12138966-release-notes
+**Compatible Models**: Claude Sonnet 4.6, Claude Opus 4.7, Claude Haiku 4.5

@@ -37,7 +37,7 @@ Built-in commands are shortcuts for common actions. There are **60+ built-in com
 | `/desktop` | Continue in Desktop app (alias: `/app`) |
 | `/diff` | Interactive diff viewer for uncommitted changes |
 | `/doctor` | Diagnose installation health |
-| `/effort [low\|medium\|high\|max\|auto]` | Set effort level. `max` requires Opus 4.6 |
+| `/effort [low\|medium\|high\|xhigh\|max\|auto]` | Set effort level via interactive arrow-key slider. Levels: `low` → `medium` → `high` → `xhigh` (new in v2.1.111) → `max`. Default is `xhigh` on Opus 4.7; `max` requires Opus 4.7 |
 | `/exit` | Exit the REPL (alias: `/quit`) |
 | `/export [filename]` | Export the current conversation to a file or clipboard |
 | `/extra-usage` | Configure extra usage for rate limits |
@@ -52,6 +52,7 @@ Built-in commands are shortcuts for common actions. There are **60+ built-in com
 | `/install-github-app` | Set up GitHub Actions app |
 | `/install-slack-app` | Install Slack app |
 | `/keybindings` | Open keybindings configuration |
+| `/less-permission-prompts` | Analyze recent Bash/MCP tool calls and add a prioritized allowlist to `.claude/settings.json` to reduce permission prompts (added v2.1.111) |
 | `/login` | Switch Anthropic accounts |
 | `/logout` | Sign out from your Anthropic account |
 | `/mcp` | Manage MCP servers and OAuth |
@@ -88,6 +89,7 @@ Built-in commands are shortcuts for common actions. There are **60+ built-in com
 | `/theme` | Change color theme |
 | `/tui` | Toggle fullscreen TUI (text user interface) mode with flicker-free rendering (added v2.1.110) |
 | `/ultraplan <prompt>` | Draft plan in ultraplan session, review in browser |
+| `/ultrareview` | Comprehensive cloud-based code review with multi-agent analysis (added v2.1.111) |
 | `/undo` | Alias for `/rewind` (added v2.1.108) |
 | `/upgrade` | Open upgrade page for higher plan tier |
 | `/usage` | Show plan usage limits and rate limit status |
@@ -120,7 +122,7 @@ These skills ship with Claude Code and are invoked like slash commands:
 - `/fork` renamed to `/branch` with `/fork` kept as alias (v2.1.77)
 - `/output-style` deprecated (v2.1.73)
 - `/review` deprecated in favor of the `code-review` plugin
-- `/effort` command added with `max` level requiring Opus 4.6
+- `/effort` command added with `max` level requiring Opus 4.7 (originally Opus 4.6-only)
 - `/voice` command added for push-to-talk voice dictation
 - `/schedule` command added for creating/managing scheduled tasks
 - `/color` command added for prompt bar customization
@@ -138,6 +140,10 @@ These skills ship with Claude Code and are invoked like slash commands:
 - `/recap` command added to manually trigger session context recap (v2.1.108)
 - `/undo` added as alias for `/rewind` (v2.1.108)
 - `/proactive` added as alias for `/loop` (v2.1.105)
+- `/effort` gained interactive arrow-key slider and new `xhigh` level between `high` and `max`; default effort raised to `xhigh` for Opus 4.7 plans (v2.1.111)
+- `/ultrareview` added for comprehensive cloud-based multi-agent code review (v2.1.111)
+- `/less-permission-prompts` added to analyze Bash/MCP tool calls and reduce permission prompts via an allowlist in `.claude/settings.json` (v2.1.111)
+- Auto mode no longer requires the `--enable-auto-mode` flag for Max subscribers on Opus 4.7 (v2.1.112)
 
 ### `/team-onboarding` — Teammate Ramp-Up Guide
 
@@ -594,11 +600,13 @@ If both exist with the same name, the **skill takes precedence**. Remove one or 
 - [CLI Reference](https://code.claude.com/docs/en/cli-reference) - Command-line options
 
 ---
+
 **Last Updated**: April 16, 2026
-**Claude Code Version**: 2.1.110
+**Claude Code Version**: 2.1.112
 **Sources**:
-- https://code.claude.com/docs/en/skills
-- https://code.claude.com/docs/en/commands
-**Compatible Models**: Claude Sonnet 4.6, Claude Opus 4.6, Claude Haiku 4.5
+- https://docs.anthropic.com/en/docs/claude-code/slash-commands
+- https://www.anthropic.com/news/claude-opus-4-7
+- https://support.claude.com/en/articles/12138966-release-notes
+**Compatible Models**: Claude Sonnet 4.6, Claude Opus 4.7, Claude Haiku 4.5
 
 *Part of the [Claude How To](../) guide series*

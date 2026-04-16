@@ -200,6 +200,8 @@ claude --model opusplan "design and implement the new API"
 
 **Edit plan externally**: Press `Ctrl+G` to open the current plan in your external editor for detailed modifications.
 
+> **v2.1.112 update**: Plan files are now named after the prompt that produced them (instead of random words), making them easier to browse and reuse.
+
 ---
 
 ## Ultraplan (Cloud Plan Drafting)
@@ -274,8 +276,8 @@ Extended thinking is a deliberate, step-by-step reasoning process where Claude:
 - `Option + T` (macOS) / `Alt + T` (Windows/Linux) - Toggle extended thinking
 
 **Automatic activation**:
-- Enabled by default for all models (Opus 4.6, Sonnet 4.6, Haiku 4.5)
-- Opus 4.6: Adaptive reasoning with effort levels: `low` (○), `medium` (◐), `high` (●), `max` (Opus 4.6 only)
+- Enabled by default for all models (Opus 4.7, Sonnet 4.6, Haiku 4.5)
+- Opus 4.7: Adaptive reasoning with effort levels: `low` (○), `medium` (◐), `high` (●), `xhigh` (new, default on Opus 4.7), `max` (Opus 4.7 only)
 - Other models: Fixed budget up to 31,999 tokens
 
 **Configuration methods**:
@@ -288,9 +290,9 @@ Extended thinking is a deliberate, step-by-step reasoning process where Claude:
 export MAX_THINKING_TOKENS=1024
 ```
 
-**Effort level** (Opus 4.6 only):
+**Effort level** (Opus 4.7 only):
 ```bash
-export CLAUDE_CODE_EFFORT_LEVEL=high   # low (○), medium (◐), high (●), or max (Opus 4.6 only)
+export CLAUDE_CODE_EFFORT_LEVEL=xhigh   # low (○), medium (◐), high (●), xhigh (default on Opus 4.7), or max (Opus 4.7 only)
 ```
 
 **CLI flag**:
@@ -303,7 +305,7 @@ claude --effort high "complex architectural review"
 /effort high
 ```
 
-> **Note:** The keyword "ultrathink" in prompts activates deep reasoning mode. Effort levels `low`, `medium`, `high`, and `max` (Opus 4.6 only) control how much reasoning Claude performs.
+> **Note:** The keyword "ultrathink" in prompts activates deep reasoning mode. Effort levels `low`, `medium`, `high`, `xhigh` (new, default on Opus 4.7), and `max` (Opus 4.7 only) control how much reasoning Claude performs.
 
 ### Benefits of Extended Thinking
 
@@ -391,8 +393,8 @@ Extended thinking is controlled via environment variables, keyboard shortcuts, a
 # Set thinking token budget
 export MAX_THINKING_TOKENS=16000
 
-# Set effort level (Opus 4.6 only): low (○), medium (◐), high (●), or max (Opus 4.6 only)
-export CLAUDE_CODE_EFFORT_LEVEL=high
+# Set effort level (Opus 4.7 only): low (○), medium (◐), high (●), xhigh (default on Opus 4.7), or max (Opus 4.7 only)
+export CLAUDE_CODE_EFFORT_LEVEL=xhigh
 ```
 
 Toggle during a session with `Alt+T` / `Option+T`, set effort with `/effort`, or configure via `/config`.
@@ -406,18 +408,20 @@ Auto Mode is a Research Preview permission mode (March 2026) that uses a backgro
 ### Requirements
 
 - **Plan**: Team, Enterprise, or API (not available on Pro or Max plans)
-- **Model**: Claude Sonnet 4.6 or Opus 4.6
+- **Model**: Claude Sonnet 4.6 or Opus 4.7
 - **Provider**: Anthropic API only (not supported on Bedrock, Vertex, or Foundry)
 - **Classifier**: Runs on Claude Sonnet 4.6 (adds extra token cost)
 
 ### Enabling Auto Mode
 
 ```bash
-# Unlock auto mode with CLI flag
+# Unlock auto mode with CLI flag (no longer required for Max subscribers on Opus 4.7 — access it directly)
 claude --enable-auto-mode
 
 # Then cycle to it with Shift+Tab in the REPL
 ```
+
+> **v2.1.112 update**: Auto mode no longer requires the `--enable-auto-mode` flag. Max subscribers access it directly on Opus 4.7.
 
 Or set it as the default permission mode:
 
@@ -1891,8 +1895,8 @@ Override config with environment variables:
 
 ```bash
 # Model selection
-export ANTHROPIC_MODEL=claude-opus-4-6
-export ANTHROPIC_DEFAULT_OPUS_MODEL=claude-opus-4-6
+export ANTHROPIC_MODEL=claude-opus-4-7
+export ANTHROPIC_DEFAULT_OPUS_MODEL=claude-opus-4-7
 export ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-4-6
 export ANTHROPIC_DEFAULT_HAIKU_MODEL=claude-haiku-4-5
 
@@ -1901,7 +1905,7 @@ export ANTHROPIC_API_KEY=sk-ant-...
 
 # Thinking configuration
 export MAX_THINKING_TOKENS=16000
-export CLAUDE_CODE_EFFORT_LEVEL=high
+export CLAUDE_CODE_EFFORT_LEVEL=xhigh   # low, medium, high, xhigh (default on Opus 4.7), or max (Opus 4.7 only)
 
 # Feature toggles
 export CLAUDE_CODE_DISABLE_AUTO_MEMORY=true
@@ -2097,14 +2101,11 @@ For more information about Claude Code and related features:
 - [Official Agent Teams Documentation](https://code.claude.com/docs/en/agent-teams)
 
 ---
+
 **Last Updated**: April 16, 2026
-**Claude Code Version**: 2.1.110
+**Claude Code Version**: 2.1.112
 **Sources**:
-- https://code.claude.com/docs/en/ultraplan
-- https://code.claude.com/docs/en/tools-reference
-- https://code.claude.com/docs/en/scheduled-tasks
-- https://code.claude.com/docs/en/remote-control
-- https://code.claude.com/docs/en/agent-teams
-- https://code.claude.com/docs/en/changelog
-- https://code.claude.com/docs/en/settings
-**Compatible Models**: Claude Sonnet 4.6, Claude Opus 4.6, Claude Haiku 4.5
+- https://docs.anthropic.com/en/docs/claude-code
+- https://www.anthropic.com/news/claude-opus-4-7
+- https://support.claude.com/en/articles/12138966-release-notes
+**Compatible Models**: Claude Sonnet 4.6, Claude Opus 4.7, Claude Haiku 4.5
